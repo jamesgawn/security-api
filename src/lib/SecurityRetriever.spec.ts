@@ -19,7 +19,7 @@ describe("SecurityRetriever", () => {
   describe("getFund", () => {
     test("should return fund price if value in page", async () => {
       mockedAxios.get.mockResolvedValue({
-        data: '<html lang="en"><head><title></title></head><body>50.00 GBX</body></html>'
+        data: '<html lang="en"><head><title></title></head><body>50.00 GBP</body></html>'
       });
       const isin = "GB00B0CNH163";
       const name = "Super Fund";
@@ -40,14 +40,14 @@ describe("SecurityRetriever", () => {
     });
     test("should throw error if page returns but price is not present", async () => {
       mockedAxios.get.mockResolvedValue({
-        data: '<html lang="en"><head><title></title></head><body>pies GBX</body></html>'
+        data: '<html lang="en"><head><title></title></head><body>pies GBP</body></html>'
       });
       const isin = "GB00B0CNH163";
       const name = "Super Fund";
       await expect(sr.getFundPrice({
         isin: isin,
         name: name
-      })).rejects.toThrow("Unable to find match for ([0-9]+.[0-9][0-9]) GBX in page");
+      })).rejects.toThrow("Unable to find match for ([0-9]+.[0-9][0-9]) GBP in page");
     });
     test("should throw error if page returns but is empty", async () => {
       mockedAxios.get.mockResolvedValue({
