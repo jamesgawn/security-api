@@ -60,13 +60,6 @@ resource "aws_apigatewayv2_stage" "api" {
   api_id = aws_apigatewayv2_api.api.id
   name   = "prod"
   auto_deploy = true
-
-#   access_log_settings {
-#     destination_arn = aws_cloudwatch_log_group.api.arn
-#     format = <<EOF
-# { "requestId":"$context.requestId", "ip": "$context.identity.sourceIp", "requestTime":"$context.requestTime", "httpMethod":"$context.httpMethod","routeKey":"$context.routeKey", "status":"$context.status","protocol":"$context.protocol", "responseLength":$context.responseLength, "integrationStatus": $context.integrationStatus, "integrationErrorMessage": "$context.integrationErrorMessage", "integration": { "error": "$context.integration.error", "integrationstatus": $context.integration.integrationStatus, "latency": $context.integration.latency, "requestId": "$context.integration.requestId", "status": $context.integration.status } }
-# EOF
-#   }
 }
 
 data "aws_acm_certificate" "api_cert" {
@@ -123,7 +116,7 @@ module "price-endpoint" {
   lambda_name = module.price-lambda.name
   api_gateway_id = aws_apigatewayv2_api.api.id
   api_gateway_execution_arn = aws_apigatewayv2_api.api.execution_arn
-  route = "/price"
+  route = "/price/{id}"
   depends_on = [
     module.price-lambda
   ]

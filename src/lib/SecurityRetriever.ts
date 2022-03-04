@@ -3,7 +3,6 @@ import {Base} from "./Base";
 import axios, {AxiosResponse} from "axios";
 import {userAgent} from "./Utils";
 import {IFund} from "../domain/IFund";
-import {Fund} from "../domain/Fund";
 import {FundPrice} from "../domain/FundPrice";
 
 export class SecurityRetriever extends Base {
