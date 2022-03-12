@@ -21,6 +21,13 @@ jest.mock("./lib/SecurityRetriever", () => ({
   }))
 }));
 
+const getLatestPrice = jest.fn();
+jest.mock("./lib/FundService", () => ({
+  FundService: jest.fn().mockImplementation(() => ({
+    getLatestPrice: getLatestPrice
+  }))
+}));
+
 describe("lambda", () => {
   const testFund = new Fund("GB0001", "Bingo Bob Fund");
   const date = new Date();
@@ -47,7 +54,13 @@ describe("lambda", () => {
   });
   describe("priceHandler", ()=> {
     beforeEach(() => {
-      mockGetFund.mockResolvedValue(new FundPrice(new Fund("test"), 15, new Date()));
+      const price = {
+        isin: "GB001",
+        name: "blah",
+        price: 15,
+        date: ""
+      };
+      getLatestPrice.mockResolvedValue(price);
     });
     test("should run successfully", async () => {
       const result = await priceHandler(event, context as any, {} as any);
