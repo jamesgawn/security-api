@@ -8,7 +8,7 @@ export class FundService extends Base {
   private priceCache: Map<string, IFundPrice> = new Map<string, IFundPrice>();
   constructor(log: Logger) {
     super(log);
-    this.priceTable = new DynamoDBHelper<IFundPrice>(log, "ift-fund-prices");
+    this.priceTable = new DynamoDBHelper<IFundPrice>(log, "security-api-securities-prices");
   }
 
   async getLatestPrice(isin: string) {

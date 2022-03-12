@@ -19,3 +19,8 @@ module "endpoint-price" {
     module.lambda-price
   ]
 }
+
+resource "aws_iam_role_policy_attachment" "lambda-price" {
+  policy_arn = aws_iam_policy.lambda-data-store-access.arn
+  role = module.lambda-price.lambda_execution_role_name
+}
