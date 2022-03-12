@@ -1,6 +1,6 @@
 import {LoggerHelper} from "./LoggerHelper";
 
-export const userAgent = "Investment Fund Tracker";
+export const userAgent = "Security API";
 export function throwError(log: LoggerHelper, friendlyMessage: string, data?: object) {
   return rethrowError(log, friendlyMessage, new Error(friendlyMessage), data);
 }
