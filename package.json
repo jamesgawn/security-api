@@ -8,8 +8,9 @@
     "test": "jest  --runInBand",
     "coverage": "jest --collectCoverage",
     "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint src/**/*.ts --fix",
     "tcl": "npm run coverage && npm run lint",
-    "deploy": "npm run build && terraform apply",
+    "deploy": "npm run build && cd infra && terraform apply",
     "undeploy": "terraform destroy"
   },
   "repository": {
@@ -45,6 +46,7 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
+    "aws-sdk": "^2.1092.0",
     "axios": "^0.21.4",
     "bunyan": "^1.8.15",
     "date-fns": "^2.28.0"

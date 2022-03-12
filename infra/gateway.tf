@@ -1,5 +1,4 @@
 // API Gateway Configuration for Endpoints
-
 resource "aws_apigatewayv2_api" "api" {
   name          = "${var.name}-api"
   protocol_type = "HTTP"

@@ -1,5 +1,5 @@
 // Price Endpoint
-module "price-lambda" {
+module "lambda-price" {
   source = "./lambda-simple"
   name = "${var.name}-price"
   description = "A lambda function to calculate the current valuation summarised across all holdings."
@@ -9,13 +9,13 @@ module "price-lambda" {
   timeout = 10
 }
 
-module "price-endpoint" {
+module "endpoint-price" {
   source = "./lambda-api-gateway-integration"
-  lambda_name = module.price-lambda.name
+  lambda_name = module.lambda-price.name
   api_gateway_id = aws_apigatewayv2_api.api.id
   api_gateway_execution_arn = aws_apigatewayv2_api.api.execution_arn
   route = "/price/{id}"
   depends_on = [
-    module.price-lambda
+    module.lambda-price
   ]
 }

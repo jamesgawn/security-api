@@ -2,7 +2,7 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  // All imported modules in your tests should be mocked automatically
+  // All imported modules in` your tests should be mocked automatically
   // automock: false,
 
   // Stop running tests after `n` failures
@@ -15,8 +15,7 @@ module.exports = {
   // cacheDirectory: "/tmp/jest_rs",
 
   // Automatically clear mock calls and instances between every test
-  clearMocks: true,
-
+  clearMocks: false,
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: false,
 
@@ -30,10 +29,7 @@ module.exports = {
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
-    "/node_modules/",
-    "/src/App.ts",
-    "/src/test/*",
-    "testdata/*"
+    "/node_modules/"
   ],
 
   // A list of reporter names that Jest uses when writing coverage reports

@@ -12,7 +12,7 @@ export class Base {
     return throwError(this.log, friendlyMessage, data);
   }
 
-  protected rethrowError(friendlyMessage: string, err: Error, data?: object) {
+  protected rethrowError(friendlyMessage: string, err: unknown, data?: object) {
     return rethrowError(this.log, friendlyMessage, err, data);
   }
 }

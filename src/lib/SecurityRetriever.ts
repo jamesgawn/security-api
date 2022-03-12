@@ -28,11 +28,7 @@ export class SecurityRetriever extends Base {
         }
       });
     } catch (err) {
-      if (err instanceof Error) {
-        throw this.rethrowError(`Failed to retrieve page ${url}`, err);
-      } else {
-        throw this.rethrowError(`Failed to retrieve page ${url}`, new Error("Unknown Error"));
-      }
+      throw this.rethrowError(`Failed to retrieve page ${url}`, err);
     }
     this.log.info(`Retrieved page ${url}`);
     if (response.data) {
