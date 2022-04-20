@@ -67,7 +67,7 @@ describe("lambda", () => {
       expect(result).toEqual("15");
     });
     test("should return an error if no path provided", async () => {
-      const result = await priceHandler(event, {} as any, {} as any);
+      const result = await priceHandler({} as any, {} as any, {} as any);
       expect(result).toEqual("Oops, something went wrong?");
     });
   });
