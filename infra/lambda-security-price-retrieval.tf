@@ -5,7 +5,7 @@ module "lambda-security-price-retrieval" {
   handler = "lambda.priceRetrieval"
   source_dir = "${path.module}/../dist"
   notification_sns_queue_name = var.notification_sns_queue_name
-  schedule = "cron(0/15 17-21 ? * 1-5 *)" 
+  schedule = "cron(0/15 17-21 ? * MON-FRI *)" 
   timeout = 10
   periodsFailingForAlarm = 2
 }
